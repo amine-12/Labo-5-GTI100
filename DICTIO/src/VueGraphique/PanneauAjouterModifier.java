@@ -1,7 +1,6 @@
 package VueGraphique;
 
 import DictioMoteur.DictioToolBox;
-import DictioMoteur.LexiNode;
 import DictioMoteur.LexiTree;
 
 import javax.swing.*;
@@ -33,26 +32,31 @@ public class PanneauAjouterModifier extends JPanel {
     private class AjouterModifierListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             LexiTree lexiTree = new LexiTree();
-            LexiNode root = new LexiNode('*', "");
             String word = panneauRecherche.getBarRechercheText();
             String definition = panneauDefinition.getDefinitionText();
 
             if (word.isEmpty() || definition.isEmpty()) {
-                // Show a warning message if either the word or the definition is empty
-                JOptionPane.showMessageDialog(PanneauAjouterModifier.this, "Word and definition must not be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(PanneauAjouterModifier.this,
+                        "Le mot et la définition ne doivent pas être vides", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
+            LexiTree.WordStatus status = lexiTree.addOrUpdateWord(word, definition);
             try {
-                DictioToolBox.updateOrAddWord(DictioToolBox.filePath ,root, word, definition);
-                lexiTree.generateTreeFromString(DictioToolBox.content);
-                panneauListeMots.updateList();
-                System.out.println(lexiTree.displayAll());
+                DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
 
-            } catch (IOException ex) {
+                if (status == LexiTree.WordStatus.ADDED) {
+                    DictioToolBox.Dictionairy().addWordToFile(DictioToolBox.filePath, word, definition);
+                    DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
+                    panneauListeMots.updateList();
+                } else if (status == LexiTree.WordStatus.UPDATED) {
+                    DictioToolBox.Dictionairy().updateWordDefinitionInFile(DictioToolBox.filePath, word, definition);
+                    DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
+                }
+            }catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-
+            lexiTree.generateTreeFromString(DictioToolBox.content);
         }
     }
 
