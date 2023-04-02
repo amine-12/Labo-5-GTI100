@@ -52,7 +52,7 @@ public class LexiTree implements LexiInterface {
         UPDATED
     }
 
-    public class LexiNode {
+    private class LexiNode {
         private final char letter;
         private String currentWord;
         private final List<String> definitions;
