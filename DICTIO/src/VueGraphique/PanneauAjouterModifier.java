@@ -43,15 +43,15 @@ public class PanneauAjouterModifier extends JPanel {
 
             LexiTree.WordStatus status = lexiTree.addOrUpdateWord(word, definition);
             try {
-                DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
+                DictioToolBox.Dictionary().readFileContents(DictioToolBox.filePath);
 
                 if (status == LexiTree.WordStatus.ADDED) {
-                    DictioToolBox.Dictionairy().addWordToFile(DictioToolBox.filePath, word, definition);
-                    DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
+                    DictioToolBox.Dictionary().addWordToFile(DictioToolBox.filePath, word, definition);
+                    DictioToolBox.Dictionary().readFileContents(DictioToolBox.filePath);
                     panneauListeMots.updateList();
                 } else if (status == LexiTree.WordStatus.UPDATED) {
-                    DictioToolBox.Dictionairy().updateWordDefinitionInFile(DictioToolBox.filePath, word, definition);
-                    DictioToolBox.Dictionairy().readFileContents(DictioToolBox.filePath);
+                    DictioToolBox.Dictionary().updateWordDefinitionInFile(DictioToolBox.filePath, word, definition);
+                    DictioToolBox.Dictionary().readFileContents(DictioToolBox.filePath);
                 }
             }catch (IOException ex) {
                 throw new RuntimeException(ex);

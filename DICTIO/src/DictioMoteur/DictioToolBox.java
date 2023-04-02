@@ -10,7 +10,7 @@ public class DictioToolBox {
     private static DictioToolBox dictionary = null;
     public static String content;
     public static String filePath;
-    public static synchronized DictioToolBox Dictionairy()
+    public static synchronized DictioToolBox Dictionary()
     {
         if (dictionary == null)
             dictionary = new DictioToolBox();

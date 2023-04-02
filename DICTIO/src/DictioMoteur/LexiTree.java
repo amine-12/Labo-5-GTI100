@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LexiTree implements LexiNodeInterface{
+public class LexiTree implements LexiInterface {
     private final LexiNode root;
 
     public LexiTree() {
@@ -30,6 +30,7 @@ public class LexiTree implements LexiNodeInterface{
         return root.getWordDefinitions(word);
     }
 
+    //methode pour tester
     public String displayAll() {
         return root.displayAll();
     }
@@ -170,6 +171,7 @@ public class LexiTree implements LexiNodeInterface{
             }
         }
 
+        //methode pour tester
         public String displayAll() {
             StringBuilder output = new StringBuilder();
 
