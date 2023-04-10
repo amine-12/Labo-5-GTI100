@@ -9,10 +9,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * La classe PanneauAjouterModifier représente un panneau graphique qui permet à l'utilisateur d'ajouter ou
+ * de modifier des mots et leurs définitions dans le dictionnaire. Ce panneau interagit avec les autres
+ * panneaux de l'interface utilisateur, tels que PanneauDefinition, PanneauRecherche et PanneauListeMots.
+ *
+ * @author Mohammed Amine Mazigh
+ * @author Muhammet Kayhan
+ */
 public class PanneauAjouterModifier extends JPanel {
-    private PanneauDefinition panneauDefinition;
-    private  PanneauRecherche panneauRecherche;
-    private PanneauListeMots panneauListeMots;
+    private final PanneauDefinition panneauDefinition;
+    private final PanneauRecherche panneauRecherche;
+    private final PanneauListeMots panneauListeMots;
+
+    /**
+     * Constructeur de la classe PanneauAjouterModifier.
+     * @param dimension - dimensions du panneau.
+     * @param panneauDefinition - instance du panneau PanneauDefinition.
+     * @param panneauRecherche - instance du panneau PanneauRecherche.
+     * @param panneauListeMots - instance du panneau PanneauListeMots.
+     */
     public PanneauAjouterModifier(Dimension dimension, PanneauDefinition panneauDefinition,
                                   PanneauRecherche panneauRecherche, PanneauListeMots panneauListeMots){
         initPanneauAjouterModifier(dimension);
@@ -21,6 +37,10 @@ public class PanneauAjouterModifier extends JPanel {
         this.panneauListeMots = panneauListeMots;
     }
 
+    /**
+     * Initialise le panneau PanneauAjouterModifier avec ses composants.
+     * @param dimension - dimensions du panneau.
+     */
     public void initPanneauAjouterModifier(Dimension dimension){
         setPreferredSize(new Dimension((int)dimension.getWidth(), (int)(dimension.getHeight() * 0.1)));
         setLayout(new BorderLayout());
@@ -29,6 +49,11 @@ public class PanneauAjouterModifier extends JPanel {
         add(ajouterModifierButton, BorderLayout.CENTER);
     }
 
+
+    /**
+     * La classe AjouterModifierListener est un ActionListener qui gère les actions d'ajout ou
+     * de modification de mots et de définitions dans le dictionnaire.
+     */
     private class AjouterModifierListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             LexiTree lexiTree = new LexiTree();
