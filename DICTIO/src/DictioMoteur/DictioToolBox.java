@@ -36,6 +36,12 @@ public class DictioToolBox {
 
     /**
      * Lit le contenu d'un fichier texte et retourne le contenu sous forme de chaîne de caractères.
+     * Préconditions :
+     * - filePath doit être un chemin de fichier valide et accessible.
+     * - word ne doit pas être vide ou null.
+     * - definition ne doit pas être vide ou null.
+     * Postconditions :
+     * - Le mot et sa définition sont ajoutés à la fin du fichier.
      *
      * @param filePath - chemin du fichier à lire.
      * @return String - le contenu du fichier sous forme de chaîne de caractères.
@@ -61,6 +67,12 @@ public class DictioToolBox {
 
     /**
      * Ajoute un mot et sa définition à la fin d'un fichier texte.
+     Préconditions :
+     * - filePath doit être un chemin de fichier valide et accessible.
+     * - word ne doit pas être vide ou null.
+     * - newDefinition ne doit pas être vide ou null.
+     * Postconditions :
+     * - La définition du mot est mise à jour dans le fichier.
      *
      * @param filePath - chemin du fichier auquel ajouter le mot et sa définition.
      * @param word - mot à ajouter.
@@ -87,6 +99,11 @@ public class DictioToolBox {
 
     /**
      * Met à jour la définition d'un mot existant dans un fichier texte.
+     *
+     * Préconditions :
+     * - filePath doit être un chemin de fichier valide et accessible.
+     * Postconditions :
+     * - Le contenu du fichier est retourné sous forme de chaîne de caractères.
      *
      * @param filePath - chemin du fichier contenant le mot dont la définition doit être mise à jour.
      * @param word - mot dont la définition doit être mise à jour.

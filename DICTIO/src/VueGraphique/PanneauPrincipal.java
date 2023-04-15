@@ -36,7 +36,6 @@ import java.awt.*;
       PanneauRecherche panneauRecherche = new PanneauRecherche(dimension,panneauDefinition);
       add(panneauRecherche, BorderLayout.WEST);
 
-
       PanneauAjouterModifier panneauAjouterModifier = new PanneauAjouterModifier(dimension,panneauDefinition,panneauRecherche,panneauListeMots);
       add(panneauAjouterModifier, BorderLayout.SOUTH);
    }

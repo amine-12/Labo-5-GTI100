@@ -1,5 +1,6 @@
 package TestPackage;
 
+import DictioMoteur.DictioToolBox;
 import DictioMoteur.LexiTree;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -58,7 +59,9 @@ public class LexiTreeTest {
     @Test
     void testAddOrUpdateWord() {
         LexiTree lexi = new LexiTree();
-        lexi.generateTreeFromString("apple&fruit\nbanana&yellow fruit");
+        String content= "apple&fruit\nbanana&yellow fruit";
+        lexi.generateTreeFromString(content);
+        DictioToolBox.content = content;
 
         LexiTree.WordStatus status = lexi.addOrUpdateWord("apple", "new definition");
         assertEquals(LexiTree.WordStatus.UPDATED, status);
