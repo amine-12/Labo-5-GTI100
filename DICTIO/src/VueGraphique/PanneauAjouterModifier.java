@@ -45,7 +45,7 @@ public class PanneauAjouterModifier extends JPanel {
         setPreferredSize(new Dimension((int)dimension.getWidth(), (int)(dimension.getHeight() * 0.1)));
         setLayout(new BorderLayout());
         JButton ajouterModifierButton = new JButton("ajouter/modifier");
-        ajouterModifierButton.addActionListener(new AjouterModifierListener());
+        ajouterModifierButton.addActionListener(new AjouterModifierListener(dimension,panneauListeMots));
         add(ajouterModifierButton, BorderLayout.CENTER);
     }
 
@@ -54,7 +54,10 @@ public class PanneauAjouterModifier extends JPanel {
      * La classe AjouterModifierListener est un ActionListener qui gère les actions d'ajout ou
      * de modification de mots et de définitions dans le dictionnaire.
      */
-    private class AjouterModifierListener implements ActionListener {
+    private class AjouterModifierListener extends PanneauChargerEnregistrer implements ActionListener {
+        public AjouterModifierListener(java.awt.Dimension dimension, VueGraphique.PanneauListeMots panneauListeMots) {
+            super(dimension, panneauListeMots);
+        }
         public void actionPerformed(ActionEvent e) {
             LexiTree lexiTree = new LexiTree();
             String word = panneauRecherche.getBarRechercheText();

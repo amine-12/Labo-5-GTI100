@@ -8,9 +8,9 @@ import javax.swing.*;
  *
  * @author Mohammed Amine Mazigh
  * @author Muhammet Kayhan
- * 132432
+ *
  */
-public class Run extends Cadre{
+public class Run {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Cadre());
     }

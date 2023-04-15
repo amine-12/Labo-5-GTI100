@@ -148,6 +148,8 @@ public class LexiTree implements LexiInterface {
             this.children = new HashMap<>();
         }
 
+
+
         /**
          * Méthode pour ajouter un mot et sa définition au nœud.
          * Préconditions : le mot et la définition doivent être non nuls.
